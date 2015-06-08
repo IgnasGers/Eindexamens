@@ -42,19 +42,27 @@
         </div>
     </nav>
     <div class="container">
-        <h2>Checklist</h2>
-        <form class="text">
-            <input type="text" placeholder="Wat ga je zoal doen vandaag?" />
-            <button id="AddButton"class="btn btn-primary">VoegToe</button>
-        </form>
-        <ul></ul>
+        <div class="jumbotron">
+            <h2>Checklist</h2>
+            <form>
+                <input id="invoervak" type="text" placeholder="Wat ga je zoal doen vandaag?" />
+                <button id="AddButton" class="btn btn-primary">VoegToe</button>
+            </form>
+            <ul></ul>
+        </div>
     </div>
     
     <script>
         $(document).ready(function () {
+           
             $('#AddButton').on('click', function () {
-                var ToAdd = $('input').val();
-                $('div').append('<li>' + ToAdd + '<a href=""></a></li>');
+                var ToAdd = $('#invoervak').val();
+                var ListItem = "<li>" + ToAdd + "</li>";
+                $('ul').append(ListItem);
+                
+            });
+            $('ul').on('click', 'li', function () {
+                $(this).toggleClass('klaar');
             });
         });
     </script>
